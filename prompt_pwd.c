@@ -35,7 +35,7 @@ void shortenPath(char *path) {
     for (size_t i = abbr_home(path, home, path_size, home_path_size); path[i] != '\0'; i++) {
         if (path[i] == '/') {
             putchar('/');
-            const unsigned char next_byte = path[i+1];
+            const unsigned char next_byte = (const unsigned char) path[i + 1];
             // Assuming UTF-8.
             if (0x01 <= next_byte && next_byte <= 0x7F) { // ascii
                 putchar(next_byte);
