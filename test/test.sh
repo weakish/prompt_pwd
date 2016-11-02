@@ -1,32 +1,32 @@
 #!/bin/sh
 
-. ./b.sh
+. test/b.sh
 
 root_directory() {
-    ok $(echo '/' | ../prompt_pwd) = '/'
+    ok $(echo '/' | ./prompt_pwd) = '/'
 }
 
 normal_directory() {
-    ok $(echo '/usr/local/bin' | ../prompt_pwd) = '/u/l/bin'
+    ok $(echo '/usr/local/bin' | ./prompt_pwd) = '/u/l/bin'
 }
 
 home_directory() {
     export HOME=/home/user
-    ok $(echo '/home/user' | ../prompt_pwd) = '~'
+    ok $(echo '/home/user' | ./prompt_pwd) = '~'
 }
 
 home_subdirectory() {
     export HOME=/home/user
-    ok $(echo '/home/user/Desktop/todo' | ../prompt_pwd) = '~/D/todo'
+    ok $(echo '/home/user/Desktop/todo' | ./prompt_pwd) = '~/D/todo'
 }
 
 non_ascii() {
-    ok $(echo '/t/桐紋/桐揚羽蝶' | ../prompt_pwd) = '/t/桐/桐揚羽蝶'
+    ok $(echo '/t/桐紋/桐揚羽蝶' | ./prompt_pwd) = '/t/桐/桐揚羽蝶'
 }
 
 # Just treat it as normal directory.
 hidden_directory() {
-    ok $(echo '/home/user/.local/share' | ../prompt_pwd) = '~/./share'
+    ok $(echo '/home/user/.local/share' | ./prompt_pwd) = '~/./share'
 }
 
 
