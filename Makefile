@@ -1,7 +1,5 @@
 include config.mk
 
-all: prompt_pwd install
-
 prompt_pwd: prompt_pwd.c
 	${CC} ${CFLAGS} -o prompt_pwd prompt_pwd.c
 
