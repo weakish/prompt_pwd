@@ -17,5 +17,10 @@ clean:
 	@rm -f prompt_pwd
 	@rm -f prompt_pwd.exe
 
-check:
+runtests:
 	sh test/test.sh
+
+gcc:
+	gcc ${CFLAGS} ${CSTDFLAGS} -o prompt_pwd prompt_pwd.c
+
+check: clean gcc runtests

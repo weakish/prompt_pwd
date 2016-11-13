@@ -19,7 +19,7 @@ To compile it from source, make sure there is a c compiler on the machine.
 ; make install # Or sudo make install
 ```
 
-`prompt_pwd` will be compiled in C11, and installed into `/usr/local/bin`.
+`prompt_pwd` will be compiled in C11 via `clang`, and installed into `/usr/local/bin`.
 Edit `config.mk` to change compiler, C standard and installation path.
 `prompt_pwd` is developed in C11, but it is compatible with C90 (ansi C) and C99.
 It is mostly compatible with C89, except it uses `//` comment.
