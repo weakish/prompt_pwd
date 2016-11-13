@@ -21,7 +21,7 @@ home_subdirectory() {
 }
 
 non_ascii() {
-    ok $(echo '/t/桐紋/桐揚羽蝶' | ./prompt_pwd) = '/t/桐/桐揚羽蝶'
+    ok $(echo '/tmp/桐紋/桐揚羽蝶' | ./prompt_pwd) = '/t/桐/桐揚羽蝶'
 }
 
 # Just treat it as normal directory.
