@@ -35,8 +35,14 @@ Uninstall
 ; make uninstall
 ```
 
-Examples
+Usage
 --------
+
+```sh
+; pwd | prompt_pwd
+```
+
+### Example
 
 I use it with `tmux`:
 
