@@ -7,7 +7,7 @@ const char LENGTH_MAX = 80;
 
 
 bool starts_with(const char *string, const char *substring,
-                 size_t string_length, size_t substring_length) {
+                 const size_t string_length, const size_t substring_length) {
     size_t string_size = string_length == 0 ? strlen(string) : string_length;
     size_t substring_size = substring_length == 0 ? strlen(substring) : substring_length;
     if (string_size < substring_size) {
@@ -17,7 +17,8 @@ bool starts_with(const char *string, const char *substring,
     }
 }
 
-size_t abbr_home(const char *path, const char *home, size_t path_size, size_t home_path_size) {
+size_t abbr_home(const char *path, const char *home,
+                 const size_t path_size, const size_t home_path_size) {
     if (starts_with(path, home, path_size, home_path_size)) {
         putchar('~');
         return home_path_size;
