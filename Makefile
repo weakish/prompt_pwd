@@ -21,6 +21,6 @@ runtests:
 	sh test/test.sh
 
 gcc:
-	gcc ${CFLAGS} ${CSTDFLAGS} -o prompt_pwd prompt_pwd.c
+	gcc -g ${CFLAGS} ${CSTDFLAGS} -o prompt_pwd prompt_pwd.c
 
 check: clean gcc runtests
