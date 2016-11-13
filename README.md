@@ -20,7 +20,7 @@ To compile it from source, make sure there is a c compiler on the machine.
 ```
 
 `prompt_pwd` will be compiled in C11, and installed into `/usr/local/bin`.
-Edit `config.mk` to change C standard and installation path.
+Edit `config.mk` to change compiler, C standard and installation path.
 `prompt_pwd` is developed in C11, but it should also work on C99,
 and `gnu11`, `gnu99`.
 It is mostly compatible with C89, except it uses `//` comment.
