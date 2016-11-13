@@ -13,7 +13,7 @@ uninstall:
 	@echo Uninstalling from ${PREFIX}/bin ...
 	@rm -f ${PREFIX}/bin/prompt_pwd
 
-test:
-	@sh test/test.sh
+check:
+	sh test/test.sh
 
 
