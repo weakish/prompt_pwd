@@ -4,7 +4,7 @@ prompt_pwd - print directory name suitable for prompt
 `prompt_pwd` will read a directory name in standard input,
 and print it in a way suitable for prompts,
 i.e. replace home directory with `~`
-and shorten every path component but the last to a default of one character.
+and shorten every path component but the last to one character.
 
 Install
 -------
