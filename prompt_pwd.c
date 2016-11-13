@@ -2,8 +2,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <sysexits.h>
 
-const char LENGTH_MAX = 80;
+#define LENGTH_MAX 80
 
 
 bool starts_with(const char *string, const char *substring,
@@ -33,24 +34,25 @@ void shortenPath(char *path) {
     const size_t home_path_size = strlen(home);
 
     size_t match = 0;
+    unsigned char next_byte;
     for (size_t i = abbr_home(path, home, path_size, home_path_size); path[i] != '\0'; i++) {
         if (path[i] == '/') {
             putchar('/');
-            const unsigned char next_byte = (const unsigned char) path[i + 1];
-            // Assuming UTF-8.
-            if (0x01 <= next_byte && next_byte <= 0x7F) { // ascii
+            next_byte = (unsigned char) path[i + 1];
+            /* Assuming UTF-8. */
+            if (0x01 <= next_byte && next_byte <= 0x7F) { /* ascii */
                 putchar(next_byte);
                 match = i + 1;
-            } else if (0xC0 <= next_byte && next_byte <= 0xDF) { // 2-bytes
+            } else if (0xC0 <= next_byte && next_byte <= 0xDF) { /* 2-bytes */
                 putchar(next_byte);
                 putchar(path[i+2]);
                 match = i + 2;
-            } else if (0xE0 <= next_byte && next_byte <= 0xEF) { // 3-bytes
+            } else if (0xE0 <= next_byte && next_byte <= 0xEF) { /* 3-bytes */
                 putchar(next_byte);
                 putchar(path[i+2]);
                 putchar(path[i+3]);
                 match = i + 3;
-            } else if (0xF0 <= next_byte && next_byte <= 0xFF) { // 4-bytes
+            } else if (0xF0 <= next_byte) { /* 4-bytes */
                 putchar(next_byte);
                 putchar(path[i+2]);
                 putchar(path[i+3]);
@@ -70,13 +72,16 @@ int main(int argc, char* argv[]) {
     char path[LENGTH_MAX];
     if (argc > 1) {
         puts("Usage: pwd | prompt_pwd");
-        return 0;
+        if (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "help") == 0) {
+            return 0;
+        } else {
+            return EX_USAGE;
+        }
     } else {
         if (fgets(path, LENGTH_MAX, stdin) != NULL) {
             shortenPath(path);
-            return 0;
         } else {
-            return 1;
+            return EX_SOFTWARE;
         }
     }
 }
