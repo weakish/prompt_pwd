@@ -13,7 +13,9 @@ uninstall:
 	@echo Uninstalling from ${PREFIX}/bin ...
 	@rm -f ${PREFIX}/bin/prompt_pwd
 
+clean:
+	@rm -f prompt_pwd
+	@rm -f prompt_pwd.exe
+
 check:
 	sh test/test.sh
-
-
